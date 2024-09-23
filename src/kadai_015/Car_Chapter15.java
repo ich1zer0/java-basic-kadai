@@ -5,18 +5,25 @@ public class Car_Chapter15 {
     private int speed = 10;
 
     public void gearChange(int afterGear) {
+        int previousGear = this.gear;
+
         if(afterGear > 0 && afterGear < 6) {
             this.gear = afterGear;
-            this.speed = this.gear * 10;
-
-            return;
+        } else {
+            this.gear = 1;
         }
 
-        this.gear = 1;
-        this.speed = 10;
+        this.speed = this.gear * 10;
+
+        if(previousGear == this.gear) {
+            System.out.println("ギアは" + previousGear + "のままです");
+        } else {
+            System.out.println("ギア" + previousGear + "からギア" + this.gear + "に切り替えました");
+
+        }
     }
 
     public void run() {
-        System.out.println("時速" + this.speed + "km");
+        System.out.println("速度は時速" + this.speed + "kmです");
     }
 }
